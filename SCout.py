@@ -1,4 +1,4 @@
-# Special Character Out class
+# Special Character Out class v0.3
 # Author: Marcel Schmalzl (MSc)
 
 # MIT License
@@ -32,9 +32,9 @@ class SCout:
     @staticmethod
     def _checkNconvertStr(texts):
         """
-        checks whether input is a string or if it can be casted into one
-        :param texts: a string or a type which can be converted into one
-        :return: text as a string if successful otherwise nothing (exception)
+        Checks whether input is a string or if it can be casted into one
+        :param texts: A string or a type which can be converted into one
+        :return: Text as a string if successful otherwise nothing (exception)
         """
         concatText = str()
         for text in texts:
@@ -48,26 +48,26 @@ class SCout:
     @staticmethod
     def info(*text):
         """
-        prints a info message (usable like normal print)
-        :param text: see doc of `_checkNconvertStr`
-        :return: formatted text to standard output
+        Prints a info message (usable like normal print)
+        :param text: See doc of `_checkNconvertStr`
+        :return: Formatted text to standard output
         """
         print('(info) : '.rjust(12), SCout._checkNconvertStr(text))
 
     @staticmethod
     def warning(*text):
         """
-        prints a warning message (usable like normal print)
-        :param text: see doc of `_checkNconvertStr`
-        :return: formatted text to standard output
+        Prints a warning message (usable like normal print)
+        :param text: See doc of `_checkNconvertStr`
+        :return: Formatted text to standard output
         """
         print('(warning) : '.rjust(12), SCout._checkNconvertStr(text))
 
     @staticmethod
     def error(*text):
         """
-        prints an error message (usable like normal print)
-        :param text: see doc of `_checkNconvertStr`
-        :return: formatted text to standard output
+        Prints an error message (usable like normal print)
+        :param text: See doc of `_checkNconvertStr`
+        :return: Formatted text to standard output
         """
         print('(error) : '.rjust(12), SCout._checkNconvertStr(text))
