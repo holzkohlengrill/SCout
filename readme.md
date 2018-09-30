@@ -6,7 +6,7 @@ Small python 3 library to print uniformly formatted console output tagged as
 * error or
 * header.
 
-If your console supports it coloured output will be used
+If your console supports it coloured output will be used.
 
 # Usage
 Similar to `print()`:
