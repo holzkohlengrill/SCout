@@ -1,5 +1,8 @@
-# Special Character Out class v0.3
+#####################################
+# Special Character Out class v1.0
 # Author: Marcel Schmalzl (MSc)
+#####################################
+
 
 # MIT License
 # Copyright (c) 2016 Marcel Schmalzl
@@ -22,52 +25,140 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+import sys
 
-# TODO: use coloured output; yellow/orange for warnings, red for errors
+"""
+Special Character Out (formatted)
+"""
 
-class SCout:
+
+def _canUseColour():
     """
-    Special Character Out (formatted)
+    Checks if coloured text output is supported
+    :return: True if colours are supported, otherwise False
+    """
+    supportedPlatforms = ["linux", "cygwin", "darwin"]
+    platformSupported = False
+
+    for platform in supportedPlatforms:
+        if sys.platform.startswith(platform):
+            platformSupported = True
+            break
+
+    isTty = hasattr(sys.stdout, 'isatty') and not sys.stdout.isatty()
+    if platformSupported or isTty:
+        return True
+    else:
+        return False
+
+
+class Header:
+    """
+    Generate header
     """
     @staticmethod
-    def _checkNconvertStr(texts):
+    def _genTopBottom(text, symbol):
         """
-        Checks whether input is a string or if it can be casted into one
-        :param texts: A string or a type which can be converted into one
-        :return: Text as a string if successful otherwise nothing (exception)
+        Generate the top or bottom of the header
+        :param text: Text
+        :param symbol: Symbol
+        :return: String for top + bottom header
         """
-        concatText = str()
-        for text in texts:
-            tempText = str(text)
-            if type(tempText) is not str:
-                raise TypeError("Input type must be a string or convertible into a string")
-            concatText += tempText
-            concatText += " "       # add space at the end
-        return concatText
+        neededLength = len(text) + 8                          # Two spaces + 3 x 2 slashes
+        return symbol * neededLength
 
     @staticmethod
-    def info(*text):
+    def _genMiddle(text, symbol):
         """
-        Prints a info message (usable like normal print)
-        :param text: See doc of `_checkNconvertStr`
-        :return: Formatted text to standard output
+        Generate the middle of the header
+        :param text: Text
+        :param symbol: Symbol
+        :return: String for middle header
         """
-        print('(info) : '.rjust(12), SCout._checkNconvertStr(text))
+        return " ".join([symbol * 3, text, symbol * 3])       # 3 synbols + text + 3 symbols separated by spaces
 
     @staticmethod
-    def warning(*text):
+    def gen(text, symbol="/"):
         """
-        Prints a warning message (usable like normal print)
-        :param text: See doc of `_checkNconvertStr`
-        :return: Formatted text to standard output
+        Generate a header
+        :param text: Text
+        :param symbol: Symbol (default: "/")
+        :return: Header as string
         """
-        print('(warning) : '.rjust(12), SCout._checkNconvertStr(text))
+        return Header._genTopBottom(text, symbol) + "\n" + Header._genMiddle(text, symbol) + "\n" + Header._genTopBottom(text, symbol) + "\n"
 
-    @staticmethod
-    def error(*text):
-        """
-        Prints an error message (usable like normal print)
-        :param text: See doc of `_checkNconvertStr`
-        :return: Formatted text to standard output
-        """
-        print('(error) : '.rjust(12), SCout._checkNconvertStr(text))
+
+class Colours:
+    """
+    Colour definitions
+    """
+    WHITE = '\033[37m'          # Indeed very light grey
+    BLUE = '\033[94m'
+    GREEN = '\033[92m'
+    WARNING = '\033[93m'        # Yellow
+    ERROR = '\033[91m'          # Light red
+    HEADER = '\033[1m'          # Bold white
+    UNDERLINE = '\033[4m'
+
+
+def _checkNconvertStr(texts):
+    """
+    Checks whether input is a string or if it can be casted into one
+    :param texts: A string or a type which can be converted into one
+    :return: Text as a string if successful otherwise nothing (exception)
+    """
+    concatText = str()
+    for text in texts:
+        tempText = str(text)
+        if type(tempText) is not str:
+            raise TypeError("Input type must be a string or convertible into a string")
+        concatText += tempText
+        #concatText += " "       # add space at the end
+    return concatText
+
+
+def info(*text):
+    """
+    Prints a info message (usable like normal print)
+    :param text: See doc of `_checkNconvertStr`
+    :return: nothing
+    """
+    print('(info) : '.rjust(12), _checkNconvertStr(text) + Colours.WHITE)
+
+
+def warning(*text):
+    """
+    Prints a warning message (usable like normal print)
+    :param text: See doc of `_checkNconvertStr`
+    :return: nothing
+    """
+    colour = ""
+    if _canUseColour():
+        colour = Colours.WARNING
+    print(colour + '(warning) : '.rjust(12), _checkNconvertStr(text) + Colours.WHITE)
+
+
+def error(*text):
+    """
+    Prints an error message (usable like normal print)
+    :param text: See doc of `_checkNconvertStr`
+    :return: nothing
+    """
+    colour = ""
+    if _canUseColour():
+        colour = Colours.ERROR
+    print(colour + '(error) : '.rjust(12), _checkNconvertStr(text) + Colours.WHITE)
+
+
+def header(*text, symbol="/"):
+    """
+    Prints a header in the following style
+
+    :param text: Header text
+    :param symbol: Symbol used for header (default: "/")
+    :return: nothing
+    """
+    colour = ""
+    if _canUseColour():
+        colour = Colours.BLUE
+    print(colour + Header.gen(_checkNconvertStr(text), symbol=symbol) + Colours.WHITE)
