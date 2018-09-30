@@ -22,4 +22,6 @@ SCout.warning("Warning text")
 
 Example output:
 
-![output](output.png)
+<div align="left">
+<img src="output.png" height="160" />
+</div>
