@@ -1,12 +1,12 @@
 import setuptools
-from SCout.SCout import VERSION
+import SCout
 
 with open("readme.md", "r") as fp:
     long_description = fp.read()
 
 setuptools.setup(
-    name="SCout | Standard Character Out",
-    version=VERSION,
+    name="SCout",
+    version=SCout.VERSION,
     author="Marcel Schmalzl",
     description="Prints formatted console output tagged as info, warning or error. Usage is similar to `print()`.",
     long_description=long_description,
