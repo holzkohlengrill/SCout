@@ -15,9 +15,9 @@ Similar to `print()`:
 import SCout
 
 SCout.header("Welcome to SCout :)")
-SCout.info("Test text")
-SCout.error("Error text")
-SCout.warning("Warning text")
+SCout.info("test")
+SCout.error("error")
+SCout.warning("Warning")
 ```
 
 Example output:
