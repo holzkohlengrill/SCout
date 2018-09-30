@@ -1,15 +1,15 @@
 sudo: false
 language: python
 python:
-- '3.6'
+- 3.6
 - 3.7-dev
-- 3.8-dev
+#- 3.8-dev
 install:
 - pip install --upgrade setuptools
 - pip install --upgrade wheel
 - pip install --upgrade twine
 script:
-- python3 -m test_Scout.py
+#- python3 -m test_Scout.py
 - python3 setup.py -q install
 - python3 setup.py sdist bdist_wheel
 deploy:
@@ -17,5 +17,6 @@ deploy:
   user: holzkohlengrill-Builder
   password:
     secure: Zkzuudt44zVn2UQ/YzE/rK9Ptv13yGy2rTr/vSx0Hv/N6UETK/2wx5dFVpnRg9+WMymyVP4JjKu2N1biPiYia3lvgsU/HZwuuzdHZfEr60EDCwSRbWE1QU6SN5XB7/eNvBR1saoGfzwDR3UGw9yGDPweT36vzZwFyZJ4xgjrQRYcMstiFz1GXw+1Q7CiqMlO2s06IjavovyvEX2gBJmHCvPVHiG6gyAgtVDksw44lk/F76V9Ljm2La1qVkwNol3dW0g8iwal5psewJay0ryQ61dLc52ZkmzQW70WKiIHU88R02VR/JUCFzx4ikTCGHO5Jjn3ZrquyUVGQRK9zHneiZseOPegVm1YuNC42byL0cu4wzVKMooNO3Trz9aFf2QiU6ZBDfSqNcwt2P1dnixY5/NtdQaKyf9d32n9UiqU3IGESlm5b64KGrGiqrdLTB6Zk199uTVI6K3opDIah7JAHNmYOQyWx8sJVvR51eWt7uylKbNy6tfjN2sllB6//kltFCgsP1On8O0MZfN9ZR0+/oV+hfsFbkR4GPKvH2r3wQSzBnOum7Haz9pV+fQl9K/98cHXuhKCL9U9CHfh+00NE4mWC99ML8tt6/zlAxTVLpIBeqAvvrXyOaCOVmL+tovda+LB8COL5kej/ZiZ6QCKMNJlu7p2fMWcpp7QHblU718=
-  on:
-    tags: true
+#  on:
+    # deploy only on tags
+#    tags: true

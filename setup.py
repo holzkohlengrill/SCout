@@ -5,7 +5,7 @@ with open("readme.md", "r") as fp:
     long_description = fp.read()
 
 setuptools.setup(
-    name="SCout",
+    name="pypiscout",
     version=SCout.VERSION,
     author="Marcel Schmalzl",
     description="Prints formatted console output tagged as info, warning or error. Usage is similar to `print()`.",
