@@ -1,10 +1,10 @@
 #####################################
-# Special Character Out class v1.0
+# SCout | Special Character Out
 # Author: Marcel Schmalzl (MSc)
 #####################################
 
 _VERSION_MAJOR = "1"
-_VERSION_MINOR = "2"
+_VERSION_MINOR = "3"
 VERSION = ".".join([_VERSION_MAJOR, _VERSION_MINOR])
 
 # MIT License
