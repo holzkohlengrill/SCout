@@ -22,4 +22,4 @@ SCout.warning("Warning text")
 
 Example output:
 
-![output]('./output.png')
+![output]('output.png')
