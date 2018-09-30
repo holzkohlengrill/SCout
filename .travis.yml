@@ -3,7 +3,6 @@ language: python
 python:
 - 3.6
 - 3.7-dev
-#- 3.8-dev
 install:
 - pip install --upgrade setuptools
 - pip install --upgrade wheel
@@ -15,7 +14,4 @@ deploy:
   provider: pypi
   user: holzkohlengrill
   password:
-    secure: oWWQg4c1Lb4kdpAV2le/y4bXQbdPVRVQ0VPr6CbXvRmeQC3lnVHorAylG2eevRmPnqnBMMTlN6LJCJAh+T7ewpTEAXKaaV94RQUxzMJquTV7a378uaKj/RUZFQ9ITkPtj9WjqVR3S470MFL3Oxc5KrqQPlMSwyaL0jOcXXleXBM1Mjao4TEEvgrhnwB0K5d8OPrJoxKbgVn6xGCzbJP+XB46A/iRr41DQwo7+m3Xy/9igouFwSqKZElHLrmDHtTWKwBYRft/y/KrXvx75j7T5eB8rx0FopzfiD8bQcG3G92kSwfwYS4zkNSUV/o9zRtu2QSAsUQY0ruoR3r0udNwPeVbPLKJ3OV8ffDxdg/gQbxXd7LF8cEPs2ENS4k6kSSbCvEbMLaROMpdWNr0krRp4gBzpZYicLuLnZpOe1QYdY2wBmC4oizu6yQOAPPVSnAW3aLAhitBscmk1A1zu2stgKiPy00Fy2a2vY2DxWQ4Bag9IH/bcriesx+Biqa7D2EPF9ldzB1tbqKjn7PFjEIsUmrnovQLuAPsT7YB9Cuk5p3q+wtLKsVjJvpPnB4Dx/UAoFDR++YAvrdwNgKt2aJ781l5340xRFYZ4fBhGL+OgoFS89KPUxGfQGBRzbx+r16m8H04jRINwNJUc/aBnTgxq8NaBIl0ZTo/txIPvPodD4g=
-#  on:
-    # deploy only on tags
-#    tags: true
+    secure: XKUyQgL1B8j669l6wJM1gEpsRo+RAlRji88sQChebzW4EPFhk4imOx2b8U7KZIPHHBpeZ6b27MHCjlpzCVirJGkcDPcJdoehJdoJDZvezKjdHL6Sm6HbnSh2q9DoWepaMhq1ZBGbHxQ0kSIKHuq/XgElZlW/aE7Uh4iOJAwC+BrMF9T7kqsVRKY2MX+YxZhJjjLrsd13D/C/ZtM1IdwwLTW89qd43onBKLr+19wRGBuAI+Jz+OCmNg3vl6p/uAno8qOML/Roxvl6oRHdCwZXxwbWjqQJ2zmT69izzWJaAwEX6LikFIc9FmiCfQsRDgRffbCTCR9KsUNN6/OXP/DMyXLfc8wRXfjndOLtiJ1QErrTSZWCmXUdJglW5o7iM9Z67Eb0mVR1dqujDuYlqmyQigK9g5fX43T8D60Kz7Ldx10nW4YskckfkzNXMwkuSTn/5iL+Nyl9t3idyO8gVCCxGoNJA3ZytxPOBbPXpOlR92tWCj6uZ582MQ/VEUrQfRASzDg8HE1IKLuc6VUmU12PhfkN73EC0hZCghOKAzgjxfgT8MEfLPu9xSmo0/2uftfevOV+y4QjUui9RE7rjPptdfpqOBv2BNX4IXPPQbq6k57WDD/RUBQmGcU0MrzhstRKlTtA5W9sWq9pCJh6AVJMXeZa/kpwe3wznHwSRLq6nfY=
