@@ -8,6 +8,13 @@ Small python 3 library to print uniformly formatted console output tagged as
 
 If your console supports it coloured output will be used.
 
+
+# Installation
+
+* `pip3 install git+https://github.com/holzkohlengrill/SCout.git`
+* `pip3 install pypiscout`
+
+
 # Usage
 Similar to `print()`:
 

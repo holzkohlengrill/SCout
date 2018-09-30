@@ -4,11 +4,11 @@
 #####################################
 
 _VERSION_MAJOR = "1"
-_VERSION_MINOR = "6"
+_VERSION_MINOR = "7"
 VERSION = ".".join([_VERSION_MAJOR, _VERSION_MINOR])
 
 # MIT License
-# Copyright (c) 2016 Marcel Schmalzl
+# Copyright (c) 2016-2018 Marcel Schmalzl
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
