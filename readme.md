@@ -19,3 +19,7 @@ SCout.info("Test text")
 SCout.error("Error text")
 SCout.warning("Warning text")
 ```
+
+Example output:
+
+![output]('./output.png')
