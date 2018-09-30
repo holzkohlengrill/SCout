@@ -14,3 +14,6 @@ deploy:
   provider: pypi
   user: holzkohlengrill
   password: test1isgood
+  on:
+    # deploy only on tags
+    tags: true
