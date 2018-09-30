@@ -23,5 +23,11 @@ SCout.warning("Warning text")
 Example output:
 
 <div align="left">
-<img src="output.png" height="160" />
+<img src="https://github.com/holzkohlengrill/SCout/raw/master/output.png" height="160" alt="```python3
+import SCout
+ SCout.header("Welcome to SCout :)")
+SCout.info("Test text")
+SCout.error("Error text")
+SCout.warning("Warning text")
+```"/>
 </div>
