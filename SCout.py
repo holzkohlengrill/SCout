@@ -4,7 +4,7 @@
 #####################################
 
 _VERSION_MAJOR = "1"
-_VERSION_MINOR = "1pre7"
+_VERSION_MINOR = "1"
 VERSION = ".".join([_VERSION_MAJOR, _VERSION_MINOR])
 
 # MIT License
