@@ -9,14 +9,13 @@ install:
 - pip install --upgrade wheel
 - pip install --upgrade twine
 script:
-#- python3 -m test_Scout.py
 - python3 setup.py -q install
 - python3 setup.py sdist bdist_wheel
 deploy:
   provider: pypi
-  user: holzkohlengrill-Builder
+  user: holzkohlengrill
   password:
-    secure: Zkzuudt44zVn2UQ/YzE/rK9Ptv13yGy2rTr/vSx0Hv/N6UETK/2wx5dFVpnRg9+WMymyVP4JjKu2N1biPiYia3lvgsU/HZwuuzdHZfEr60EDCwSRbWE1QU6SN5XB7/eNvBR1saoGfzwDR3UGw9yGDPweT36vzZwFyZJ4xgjrQRYcMstiFz1GXw+1Q7CiqMlO2s06IjavovyvEX2gBJmHCvPVHiG6gyAgtVDksw44lk/F76V9Ljm2La1qVkwNol3dW0g8iwal5psewJay0ryQ61dLc52ZkmzQW70WKiIHU88R02VR/JUCFzx4ikTCGHO5Jjn3ZrquyUVGQRK9zHneiZseOPegVm1YuNC42byL0cu4wzVKMooNO3Trz9aFf2QiU6ZBDfSqNcwt2P1dnixY5/NtdQaKyf9d32n9UiqU3IGESlm5b64KGrGiqrdLTB6Zk199uTVI6K3opDIah7JAHNmYOQyWx8sJVvR51eWt7uylKbNy6tfjN2sllB6//kltFCgsP1On8O0MZfN9ZR0+/oV+hfsFbkR4GPKvH2r3wQSzBnOum7Haz9pV+fQl9K/98cHXuhKCL9U9CHfh+00NE4mWC99ML8tt6/zlAxTVLpIBeqAvvrXyOaCOVmL+tovda+LB8COL5kej/ZiZ6QCKMNJlu7p2fMWcpp7QHblU718=
+    secure: oWWQg4c1Lb4kdpAV2le/y4bXQbdPVRVQ0VPr6CbXvRmeQC3lnVHorAylG2eevRmPnqnBMMTlN6LJCJAh+T7ewpTEAXKaaV94RQUxzMJquTV7a378uaKj/RUZFQ9ITkPtj9WjqVR3S470MFL3Oxc5KrqQPlMSwyaL0jOcXXleXBM1Mjao4TEEvgrhnwB0K5d8OPrJoxKbgVn6xGCzbJP+XB46A/iRr41DQwo7+m3Xy/9igouFwSqKZElHLrmDHtTWKwBYRft/y/KrXvx75j7T5eB8rx0FopzfiD8bQcG3G92kSwfwYS4zkNSUV/o9zRtu2QSAsUQY0ruoR3r0udNwPeVbPLKJ3OV8ffDxdg/gQbxXd7LF8cEPs2ENS4k6kSSbCvEbMLaROMpdWNr0krRp4gBzpZYicLuLnZpOe1QYdY2wBmC4oizu6yQOAPPVSnAW3aLAhitBscmk1A1zu2stgKiPy00Fy2a2vY2DxWQ4Bag9IH/bcriesx+Biqa7D2EPF9ldzB1tbqKjn7PFjEIsUmrnovQLuAPsT7YB9Cuk5p3q+wtLKsVjJvpPnB4Dx/UAoFDR++YAvrdwNgKt2aJ781l5340xRFYZ4fBhGL+OgoFS89KPUxGfQGBRzbx+r16m8H04jRINwNJUc/aBnTgxq8NaBIl0ZTo/txIPvPodD4g=
 #  on:
     # deploy only on tags
 #    tags: true
