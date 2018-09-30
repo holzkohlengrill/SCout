@@ -1,19 +1,22 @@
 sudo: false
 language: python
 python:
-- 3.6
-- 3.7-dev
+    - 3.6
+    - 3.7-dev
 install:
-- pip install --upgrade setuptools
-- pip install --upgrade wheel
-- pip install --upgrade twine
+    - pip install --upgrade setuptools
+    - pip install --upgrade wheel
+    - pip install --upgrade twine
 script:
-- python3 setup.py -q install
-- python3 setup.py sdist bdist_wheel
+    - python3 setup.py -q install
+    - python3 setup.py sdist bdist_wheel
 deploy:
-  provider: pypi
-  user: holzkohlengrill
-  password:
-    secure: g93YE6CatUD6NpGeYTgFzy26SnaItkbpik64323bSHYUh3nx8hfL6YTjmfmcKxqoVCm9YNPwBf93oxrwx13kX5da5c8xf7hsOt5dmFJAscC5HzfPugYmpfBwBGUlC6ET8CtImlElgTZNvmRmk0iCMOnFsW8ftEfv1dbcRGBLhCJIO00LDucLC5YPgYP+Svc6NfbLFHa8xxRo4I2yaR4Kr8vPT39Pnz8zNH3uQWH8rhFu2SWA51cI5H6JFn2S0zoKPcNCm7Gu7Q9aOWwdFGSR1ApahduFLGRYho+d3UVlPVQI8rANh3YvMV2h3x1hm7gi2gJ13nD0Gzvdbk34CPqejvJQ3/PT/xWQW02t0If6t4bkI1G9VAScgIpwPykMWr7wZc7gPL3vPA5JXiSl/JjdIpsSvG8FNv9/WDqi2IJaZbWQupImooIGE9xJQ7KDwKRFRGDUd++Zqs46nhSBVksiPxMJMZ9Q1uRQcVrSBR3DdWQTham+/yQuuXrPiKi8hmMX0foVkgsEUOmbpDwyKSbOffGbBvK0U7ctHRIHiaVZFT8G8s3IpLfCMhW9f+S1JtVbvMcSe7FXIz0O6/3xKuiSCpzz1pnGirNTiaweRk+0EKNBybGchgrnqSQstl+8KHRhxOAek7/PHJLvUfmfIhy9lHYefyzxPRsU5D/aSpwSnJE=
-  on:
-    tags: true
+    provider: pypi
+    user: holzkohlengrill
+    # Do not use git Bash on Windows since encryption will fail
+    password:
+        secure: Uo5jQ41EPGPMQkDCK3a/2IFzj4Ag/XbtW/7r6rqsj1oxhxa57GkoLHBhpHaSNfdp5K+HW+TiMtcmDAk92Hb8um+6jVDXjFNzhyS4Sy75UetzEQUe7Z8YlUXDaLLcEtczrBwv9RrCkJPROV7MJ2n9JhwuZVBjcV6X/V0Ru+RrkN7dcb4srtG+1qkfjiyGx0MxjgK/WqIGjY44S4a9hK/+kGm7clthHqEnS4rhOLyvzPyHsFhDHcn810/c9iOl18RpFHc0ND7q6s4/LRSAY+NMWh4erQO3UoiCatjsGfZ7kkbsCo0XtZEBMRzU8E4DyHLLwK3syEUz/lrdufcDTwBr/AVoFnlteQnyPWlICCeBETK+OvxPQC6o1bhGgdW75WFVlQ8naKdcJ4gJxeKb0h/GWUujKGtRnEZdDk1ZLhQ39yiITrGsLrDweqKbtfanjTdun7zxqZQTNFjmfnowwtWqZDQtbWPrW6Kx0Buk5TD+wBMvwg5iRDlMyGR3UEGWPHU9LUwD0ra6bjJEFJeUxSAmGkYz4aFg5/IGJs8g/V7OA3dTdijGYpuWL/PgLqhTMkivjSsTgS124aKQWBXIRRN+FFyih51eROPnwgE0YWVmHkPvZT2gTD4Ca0c8Z+VsJhJQXBYamgmNADEHk5G+Di1Q9fKudJINtgT/e2bO9zc7bTg=
+    on:
+        # deploy only on tags
+        tags: true
+
