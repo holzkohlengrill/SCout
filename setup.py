@@ -6,6 +6,7 @@ with open("readme.md", "r") as fp:
 setuptools.setup(
     name="pypiscout",
     version=1.3,
+    license="MIT",
     author="Marcel Schmalzl",
     description="Prints formatted console output tagged as info, warning or error. Usage is similar to `print()`.",
     long_description=long_description,
