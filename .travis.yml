@@ -1,23 +1,18 @@
 sudo: false
 language: python
 python:
-#    - 3.6
-    - 3.7-dev
-#    - 3.8-dev
+- 3.7-dev
 install:
-    - pip install --upgrade setuptools
-    - pip install --upgrade wheel
-    - pip install --upgrade twine
+- pip install --upgrade setuptools
+- pip install --upgrade wheel
+- pip install --upgrade twine
 script:
-    - python3 setup.py -q install
-    - python3 setup.py sdist bdist_wheel
+- python3 setup.py -q install
+- python3 setup.py sdist bdist_wheel
 deploy:
-    provider: pypi
-    user: holzkohlengrill
-    # Do not use git Bash on Windows since encryption will fail
-    password:
-        secure: Uo5jQ41EPGPMQkDCK3a/2IFzj4Ag/XbtW/7r6rqsj1oxhxa57GkoLHBhpHaSNfdp5K+HW+TiMtcmDAk92Hb8um+6jVDXjFNzhyS4Sy75UetzEQUe7Z8YlUXDaLLcEtczrBwv9RrCkJPROV7MJ2n9JhwuZVBjcV6X/V0Ru+RrkN7dcb4srtG+1qkfjiyGx0MxjgK/WqIGjY44S4a9hK/+kGm7clthHqEnS4rhOLyvzPyHsFhDHcn810/c9iOl18RpFHc0ND7q6s4/LRSAY+NMWh4erQO3UoiCatjsGfZ7kkbsCo0XtZEBMRzU8E4DyHLLwK3syEUz/lrdufcDTwBr/AVoFnlteQnyPWlICCeBETK+OvxPQC6o1bhGgdW75WFVlQ8naKdcJ4gJxeKb0h/GWUujKGtRnEZdDk1ZLhQ39yiITrGsLrDweqKbtfanjTdun7zxqZQTNFjmfnowwtWqZDQtbWPrW6Kx0Buk5TD+wBMvwg5iRDlMyGR3UEGWPHU9LUwD0ra6bjJEFJeUxSAmGkYz4aFg5/IGJs8g/V7OA3dTdijGYpuWL/PgLqhTMkivjSsTgS124aKQWBXIRRN+FFyih51eROPnwgE0YWVmHkPvZT2gTD4Ca0c8Z+VsJhJQXBYamgmNADEHk5G+Di1Q9fKudJINtgT/e2bO9zc7bTg=
-    on:
-        # deploy only on tags
-        tags: true
-
+  provider: pypi
+  user: holzkohlengrill
+  password:
+    secure: Y/QOgEBckBGNoCMj50sWshS8KHqEx4xDkt/RDZLUHoL1lBCqki88HgJC9lhlztVrx/vJcpKLRSAR0zVTJFcMiSmiSYzgYP8iraLhx49RCK/fbNplWG/7IIraXNkmyrYpihNF8cAmuyLiqX9RlpJw1kUyz8jNA86xOqe3uAznEhxKT73Lahmr3GbKWAOISFg4RtlKjuIInQBKULBrSkiwpsT0NtDgrlfR/kHgvz0Hwm+4nbaPCXRjlywkEdx2fN9RQUPfVYYxqg2upIvB6zuaQyOpROB56zK8jmKG2KVH1uS7qQUr5GbCwmsdM928MO/ad0788heKjOl1j0akD5lykcg9XaR+trkPq+BqQ3lB+RUJ1WTuvjJxojs3vde7iSJsH3FgpaOUTdHyk7e0hJFm+brzbl7StCkWbT8+AAqG9n1ymViFZdMFEWc0eTTrO5T43on4dtyzdFaeZH/1UG0IV7UCzeQVEKEP+8wCVCKp9KAZGZN4hmLL99+TPZCtmYWn4wPp8g+TTo66PZGXImPtlkndzGKdLnnzRZ31TOLN/GORf46/WfI7DUkq86MBABsUcKySaDHiYgLEyzo61nRIiynFYYDBpXueTuXAROAAlmoZFiOQxml+KDImjmja2kgC0bTuyOhjenQaMRhviZBnYJsb+CHtKIMhKAQ5zUBn4fg=
+  on:
+    tags: true
