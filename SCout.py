@@ -3,6 +3,9 @@
 # Author: Marcel Schmalzl (MSc)
 #####################################
 
+_VERSION_MAJOR = "1"
+_VERSION_MINOR = "0"
+VERSION = ".".join([_VERSION_MAJOR, _VERSION_MINOR])
 
 # MIT License
 # Copyright (c) 2016 Marcel Schmalzl
