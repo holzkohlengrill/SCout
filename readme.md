@@ -19,12 +19,12 @@ If your console supports it coloured output will be used.
 Similar to `print()`:
 
 ```python3
-import SCout
+import pypiscout as sc
 
-SCout.header("Welcome to SCout :)")
-SCout.info("test")
-SCout.error("error")
-SCout.warning("Warning")
+sc.header("Welcome to SCout :)")
+sc.info("test")
+sc.error("error")
+sc.warning("Warning")
 ```
 
 Example output:
