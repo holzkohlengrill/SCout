@@ -4,7 +4,7 @@
 #####################################
 
 _VERSION_MAJOR = "1"
-_VERSION_MINOR = "7"
+_VERSION_MINOR = "8"
 VERSION = ".".join([_VERSION_MAJOR, _VERSION_MINOR])
 
 # MIT License
@@ -78,6 +78,13 @@ class Header:
         :param symbol: Symbol
         :return: String for middle header
         """
+        # TODO: Add multi-line support (MSc)
+        # Workaround:
+        if "\n" in "".join(text):
+            for txt in text:
+                txt.replace("\n", "; ")
+            print(text)
+
         return " ".join([symbol * 3, text, symbol * 3])       # 3 synbols + text + 3 symbols separated by spaces
 
     @staticmethod
@@ -111,49 +118,64 @@ def _checkNconvertStr(texts):
     :return: Text as a string if successful otherwise nothing (exception)
     """
     concatText = str()
+    concatTextLst = []
     for text in texts:
+        # Test texts elements
         tempText = str(text)
         if type(tempText) is not str:
             raise TypeError("Input type must be a string or convertible into a string")
-        concatText += tempText
-        #concatText += " "       # add space at the end
-    return concatText
+        concatTextLst.append(str(text))
+
+    return " ".join(concatTextLst)      # Preserve whitespaces when using multiple text elements
 
 
-def info(*text):
+def info(*text, disableColour = False):
     """
     Prints a info message (usable like normal print)
     :param text: See doc of `_checkNconvertStr`
     :return: nothing
     """
-    print('(info) : '.rjust(12), _checkNconvertStr(text) + Colours.WHITE)
+    stdColour = ""
+    if _canUseColour() and not disableColour:
+        stdColour = Colours.WHITE
+    textOut = " ".join(['(info) : '.rjust(12), _checkNconvertStr(text) + stdColour])
+    print(textOut)
+    return textOut
 
 
-def warning(*text):
+def warning(*text, disableColour = False):
     """
     Prints a warning message (usable like normal print)
     :param text: See doc of `_checkNconvertStr`
     :return: nothing
     """
     colour = ""
-    if _canUseColour():
+    stdColour = ""
+    if _canUseColour() and not disableColour:
         colour = Colours.WARNING
-    print(colour + '(warning) : '.rjust(12), _checkNconvertStr(text) + Colours.WHITE)
+        stdColour = Colours.WHITE
+    textOut = " ".join([colour + '(warning) : '.rjust(12), _checkNconvertStr(text) + stdColour])
+    print(textOut)
+    return textOut
 
 
-def error(*text):
+def error(*text, disableColour = False):
     """
     Prints an error message (usable like normal print)
     :param text: See doc of `_checkNconvertStr`
     :return: nothing
     """
     colour = ""
-    if _canUseColour():
+    stdColour = ""
+    if _canUseColour() and not disableColour:
         colour = Colours.ERROR
-    print(colour + '(error) : '.rjust(12), _checkNconvertStr(text) + Colours.WHITE)
+        stdColour = Colours.WHITE
+    textOut = " ".join([colour + '(error) : '.rjust(12), _checkNconvertStr(text) + stdColour])
+    print(textOut)
+    return textOut
 
 
-def header(*text, symbol="/"):
+def header(*text, symbol="/", disableColour = False):
     """
     Prints a header in the following style
 
@@ -162,6 +184,10 @@ def header(*text, symbol="/"):
     :return: nothing
     """
     colour = ""
-    if _canUseColour():
+    stdColour = ""
+    if _canUseColour() and not disableColour:
         colour = Colours.BLUE
-    print(colour + Header.gen(_checkNconvertStr(text), symbol=symbol) + Colours.WHITE)
+        stdColour = Colours.WHITE
+    textOut = " ".join([colour + Header.gen(_checkNconvertStr(text), symbol=symbol) + stdColour])
+    print(textOut)
+    return textOut
