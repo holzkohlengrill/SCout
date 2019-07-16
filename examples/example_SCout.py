@@ -8,3 +8,15 @@ If not see:
 * https://github.com/holzkohlengrill/SCout/blob/master/LICENSE
 * https://opensource.org/licenses/MIT
 """
+
+from pypiscout import SCout as sc
+
+
+print("\n")
+
+sc.header("Welcome to SCout!")
+sc.debug("Some debug message: 0xDEADBEEF")
+sc.info("An info message")
+sc.wwarning("Weak warnings are supported")
+sc.warning("This is a warning")
+sc.error("An error occured")

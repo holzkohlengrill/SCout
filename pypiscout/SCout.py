@@ -1,33 +1,17 @@
-#####################################
-# SCout | Special Character Out
-# Author: Marcel Schmalzl (MSc)
-#####################################
+"""
+SCout | Special Character Out
 
-_VERSION_MAJOR = "1"
-_VERSION_MINOR = "8"
-VERSION = ".".join([_VERSION_MAJOR, _VERSION_MINOR])
+Copyright 2017-2019, Marcel Schmalzl (MSc)
+This code is licensed under a MIT license
+You should have received a copy of the MIT licence along with this program.
+If not see:
+* https://github.com/holzkohlengrill/SCout/blob/master/LICENSE
+* https://opensource.org/licenses/MIT
+"""
 
-import sys
+from pypiscout.SCout_helpers import _canUseColour, _checkNconvertStr, Colours
 
-
-def _canUseColour():
-    """
-    Checks if coloured text output is supported
-    :return: True if colours are supported, otherwise False
-    """
-    supportedPlatforms = ["linux", "cygwin", "darwin"]
-    platformSupported = False
-
-    for platform in supportedPlatforms:
-        if sys.platform.startswith(platform):
-            platformSupported = True
-            break
-
-    isTty = hasattr(sys.stdout, 'isatty') and not sys.stdout.isatty()
-    if platformSupported or isTty:
-        return True
-    else:
-        return False
+__ALIGNMENT = 16
 
 
 class Header:
@@ -42,8 +26,8 @@ class Header:
         :param symbol: Symbol
         :return: String for top + bottom header
         """
-        neededLength = len(text) + 8                          # Two spaces + 3 x 2 slashes
-        return symbol * neededLength
+        neededLength = len(text) + 8  # Two spaces + 3 x 2 slashes
+        return str(symbol * neededLength)
 
     @staticmethod
     def _genMiddle(text, symbol):
@@ -60,7 +44,7 @@ class Header:
                 txt.replace("\n", "; ")
             print(text)
 
-        return " ".join([symbol * 3, text, symbol * 3])       # 3 synbols + text + 3 symbols separated by spaces
+        return " ".join([symbol * 3, text, symbol * 3])  # 3 synbols + text + 3 symbols separated by spaces
 
     @staticmethod
     def gen(text, symbol="/"):
@@ -73,96 +57,124 @@ class Header:
         return Header._genTopBottom(text, symbol) + "\n" + Header._genMiddle(text, symbol) + "\n" + Header._genTopBottom(text, symbol) + "\n"
 
 
-class Colours:
+def debug(*text, disableColour=False):
     """
-    Colour definitions
-    """
-    WHITE = '\033[37m'          # Indeed very light grey
-    BLUE = '\033[94m'
-    GREEN = '\033[92m'
-    WARNING = '\033[93m'        # Yellow
-    ERROR = '\033[91m'          # Light red
-    HEADER = '\033[1m'          # Bold white
-    UNDERLINE = '\033[4m'
-
-
-def _checkNconvertStr(texts):
-    """
-    Checks whether input is a string or if it can be casted into one
-    :param texts: A string or a type which can be converted into one
-    :return: Text as a string if successful otherwise nothing (exception)
-    """
-    concatText = str()
-    concatTextLst = []
-    for text in texts:
-        # Test texts elements
-        tempText = str(text)
-        if type(tempText) is not str:
-            raise TypeError("Input type must be a string or convertible into a string")
-        concatTextLst.append(str(text))
-
-    return " ".join(concatTextLst)      # Preserve whitespaces when using multiple text elements
-
-
-def info(*text, disableColour = False):
-    """
-    Prints a info message (usable like normal print)
+    Prints a debug message (usable like normal print)
+    :param disableColour: disable coloured output (default: False)
     :param text: See doc of `_checkNconvertStr`
-    :return: nothing
+    :return: The text printed
     """
+    colour = ""
     stdColour = ""
     if _canUseColour() and not disableColour:
-        stdColour = Colours.WHITE
-    textOut = " ".join(['(info) : '.rjust(12), _checkNconvertStr(text) + stdColour])
+        colour = Colours.LIGHT_CYAN
+        stdColour = Colours.NO_COLOUR
+    textOut = " ".join([colour + '(debug) :'.rjust(__ALIGNMENT), _checkNconvertStr(text) + stdColour])
     print(textOut)
     return textOut
 
 
-def warning(*text, disableColour = False):
+def info(*text, disableColour=False):
+    """
+    Prints a info message (usable like normal print)
+    :param disableColour: disable coloured output (default: False)
+    :param text: See doc of `_checkNconvertStr`
+    :return: The text printed
+    """
+    colour = ""
+    stdColour = ""
+    if _canUseColour() and not disableColour:
+        colour = Colours.WHITE
+        stdColour = Colours.NO_COLOUR
+    textOut = " ".join([colour + ' (info) :'.rjust(__ALIGNMENT), _checkNconvertStr(text) + stdColour])
+    print(textOut)
+    return textOut
+
+
+def wwarning(*text, disableColour=False):
+    """
+    Prints a weak warning message (usable like normal print)
+    :param disableColour: disable coloured output (default: False)
+    :param text: See doc of `_checkNconvertStr`
+    :return: The text printed
+    """
+    colour = ""
+    stdColour = ""
+    if _canUseColour() and not disableColour:
+        colour = Colours.WWARNING
+        stdColour = Colours.NO_COLOUR
+    textOut = " ".join([colour + '(weak warning) :'.rjust(__ALIGNMENT), _checkNconvertStr(text) + stdColour])
+    print(textOut)
+    return textOut
+
+
+def warning(*text, disableColour=False):
     """
     Prints a warning message (usable like normal print)
+    :param disableColour: disable coloured output (default: False)
     :param text: See doc of `_checkNconvertStr`
-    :return: nothing
+    :return: The text printed
     """
     colour = ""
     stdColour = ""
     if _canUseColour() and not disableColour:
         colour = Colours.WARNING
-        stdColour = Colours.WHITE
-    textOut = " ".join([colour + '(warning) : '.rjust(12), _checkNconvertStr(text) + stdColour])
+        stdColour = Colours.NO_COLOUR
+    textOut = " ".join([colour + '(warning) :'.rjust(__ALIGNMENT), _checkNconvertStr(text) + stdColour])
     print(textOut)
     return textOut
 
 
-def error(*text, disableColour = False):
+def error(*text, disableColour=False):
     """
     Prints an error message (usable like normal print)
+    :param disableColour: disable coloured output (default: False)
     :param text: See doc of `_checkNconvertStr`
-    :return: nothing
+    :return: The text printed
     """
     colour = ""
     stdColour = ""
     if _canUseColour() and not disableColour:
         colour = Colours.ERROR
-        stdColour = Colours.WHITE
-    textOut = " ".join([colour + '(error) : '.rjust(12), _checkNconvertStr(text) + stdColour])
+        stdColour = Colours.NO_COLOUR
+    textOut = " ".join([colour + '(error) :'.rjust(__ALIGNMENT), _checkNconvertStr(text) + stdColour])
     print(textOut)
     return textOut
 
 
-def header(*text, symbol="/", disableColour = False):
+def custom(*text, disableColour=False, colourCode=Colours.WHITE, prefix='info', alignment=__ALIGNMENT):
+    """
+    Prints a customised message (usable like normal print)
+    :param text:  See doc of `_checkNconvertStr`
+    :param disableColour: disable coloured output (default: False)
+    :param colourCode: custom colour (int of foreground colour ANSI/VT100 Control sequence) (default: white)
+    :param prefix: Text to display like `warning`, `error`, `info`, ... (default: info)
+    :param alignment: Padding of text vs. prefix
+    :return: The text printed
+    """
+    colour = ""
+    stdColour = ""
+    if _canUseColour() and not disableColour:
+        colour = '\033[' + colourCode + 'm'
+        stdColour = Colours.NO_COLOUR
+    textOut = " ".join([colour + '(' + str(prefix) + ') :'.rjust(alignment), _checkNconvertStr(text) + stdColour])
+    print(textOut)
+    return textOut
+
+
+def header(*text, symbol="/", disableColour=False):
     """
     Prints a header in the following style
-
+    :param disableColour: disable coloured output (default: False)
     :param text: Header text
     :param symbol: Symbol used for header (default: "/")
-    :return: nothing
+    :return: The text printed
     """
     colour = ""
     stdColour = ""
     if _canUseColour() and not disableColour:
         colour = Colours.BLUE
-        stdColour = Colours.WHITE
+        stdColour = Colours.NO_COLOUR
     textOut = " ".join([colour + Header.gen(_checkNconvertStr(text), symbol=symbol) + stdColour])
     print(textOut)
     return textOut

@@ -5,10 +5,10 @@ with open("readme.md", "r") as fp:
 
 setuptools.setup(
     name="pypiscout",
-    version=1.8,
+    version=2.0,
     license="MIT",
     author="Marcel Schmalzl",
-    description="Prints formatted console output tagged as info, warning or error. Usage is similar to `print()`.",
+    description="Prints formatted console output tagged as info, warning, error, etc. Usage is similar to `print()`.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/holzkohlengrill/SCout",

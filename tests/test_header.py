@@ -1,7 +1,19 @@
+"""
+SCout | Special Character Out
+
+Copyright 2017-2019, Marcel Schmalzl (MSc)
+This code is licensed under a MIT license
+You should have received a copy of the MIT licence along with this program.
+If not see:
+* https://github.com/holzkohlengrill/SCout/blob/master/LICENSE
+* https://opensource.org/licenses/MIT
+"""
+
 import unittest
 from unittest import TestCase
 
-import pypiscout.SCout as sc
+import pypiscout.SCout as sc_simple
+from pypiscout.SCout_Logger import Logger as sc
 
 TEXTLIST = [
     "Lorem ipsum dolor sit amet, consetetur sadipscing elitr,",
@@ -27,10 +39,9 @@ HEADEROUTPUT_MULTILINE_EXPECTED = [
 ]
 
 
-class TestHeader(TestCase):
+class TestHeaderSimple(TestCase):
     def testSingleArg(self):
-        print("Conducting test:", "testSingleArg")
-        singleHeader = sc.Header.gen(TEXTSINGLE, symbol="/")
+        singleHeader = sc_simple.Header.gen(TEXTSINGLE, symbol="/")
         print(singleHeader)
         self.assertMultiLineEqual(HEADEROUTPUT_EXPECTED, singleHeader)
 
@@ -40,8 +51,14 @@ class TestHeader(TestCase):
     #     :return:
     #     """
     #     print("Conducting test:", "testMultiArg")
-    #     singleHeader = sc.Header.gen(TEXTLIST, symbol="/")
+    #     singleHeader = sc_simple.Header.gen(TEXTLIST, symbol="/")
     #     self.assertMultiLineEqual(HEADEROUTPUT_EXPECTED, singleHeader)
+
+
+class TestHeaderLogger(TestCase):
+    def testSingleArg(self):
+        singleHeader = sc().header(TEXTSINGLE, symbol="/", disableColour=True)
+        self.assertMultiLineEqual(HEADEROUTPUT_EXPECTED, singleHeader)
 
 
 if __name__ == '__main__':
