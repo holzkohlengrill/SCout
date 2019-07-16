@@ -89,5 +89,5 @@ sc().error("Here the error action is defined as sys.exit(-10)")
 
 ### Example output:
 <div align="left">
-<img src="https://github.com/holzkohlengrill/SCout/raw/master/output_SCout_Logger.png" height="160" title="Simple SCout Output" alt="Output Image: https://github.com/holzkohlengrill/SCout/raw/master/output_SCout_Logger.png"/>
+<img src="https://github.com/holzkohlengrill/SCout/raw/master/output_SCout_Logger.png" height="360" title="Simple SCout Output" alt="Output Image: https://github.com/holzkohlengrill/SCout/raw/master/output_SCout_Logger.png"/>
 </div>
