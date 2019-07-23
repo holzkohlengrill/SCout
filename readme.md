@@ -1,3 +1,7 @@
+[![PyPI version](https://badge.fury.io/py/pypiscout.svg)](https://badge.fury.io/py/pypiscout)
+
+-------------------
+
 # SCout - Standard Character Out
 Lightweight python 3 library to print uniformly formatted console output tagged as
 
