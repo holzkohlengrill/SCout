@@ -5,7 +5,7 @@ with open("readme.md", "r") as fp:
 
 setuptools.setup(
     name="pypiscout",
-    version=2.5,
+    version=2.6,
     license="MIT",
     author="Marcel Schmalzl",
     description="Description Special Character Out (aka pypiscout) | Prints uniformly formatted console output",
