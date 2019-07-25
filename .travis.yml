@@ -13,6 +13,6 @@ deploy:
   provider: pypi
   user: holzkohlengrill
   password:
-    secure: $PYPI_SECRET
+    secure: kzZzppPt+GKFIHC9yxsmJWHqLR0y5hs3v/EEUcL1TcIZTsg7rTP2qhilqdUk1rDwrX1KsNX7/Y4eo5hi0vzJqmeWJJ0odGgqyPh6/aSv5vEIawej4PxTmSKzoRFCdoTq8WmC6/Hp2wco7v03Szs3h2eUtszjbtAGYjI+zpsiAFCC9BqMCya/2dD7ihmHOVQmRh9m6mQncIX1yt9fDVSi4Hx4EgzurXUbobfzq7T/wtXUZCC6oATJfAaQn58dhR4jTNWQ/q9U+WES53oQpZ6WqdrwFm6LzbiHrOQH6+dCdF+VuQgHWwSyi5Bu81B6O0BDqO23xPi1vELJ41FXB/70xl88k8pKpaqf1b6qKtfMAYAMRt8AkUsAJOloXzEY7w9dyXt8mJu4eHcMMltiJp+eWQM4QpWXPwHQAh/5RK+OxSGByfk8QU+PUMfZzEes5vMox2qV9IcY1uPkv+R/S6yIlju+UUGaOWfA9qp5uyaFW4jkpO3gdprhJyyrTjZElAR2Y3QES5mHBNH7QzUDowUCvWH23Q1cOQejbHExPomLSU6mCy745AgIoVCWbLoS0YUDq7beASF4BV35ffnMRp+vEHSNmNpd3U53M0IsqUzPYovrSkXo2+al0yjxVIvojD7/AWPst/7wdz2e65tPiFrlLsK52u1wMyLL1u0W0vjaJM4=
   on:
     tags: true
