@@ -13,6 +13,6 @@ deploy:
   provider: pypi
   user: holzkohlengrill
   password:
-    secure: $SECRET
+    secure: "${SECRET}"
   on:
     tags: true
