@@ -14,20 +14,52 @@ from pypiscout.SCout_helpers import Singleton
 
 _VERSION_MAJOR = "2"
 _VERSION_MINOR = "0"
-VERSION = ".".join([_VERSION_MAJOR, _VERSION_MINOR])
+_VERSION_PATCH = "1"
+VERSION = ".".join([_VERSION_MAJOR, _VERSION_MINOR, _VERSION_PATCH])
 
 
 class Logger(metaclass=Singleton):
     """
     SCout logging class
     """
+    @staticmethod
+    def _checkVerbosity(invVerbosity):
+        """
+        Check for valid values of invVerbosity (if invalid an exception is thrown)
+        :param invVerbosity: [int or str]
+        :return: None
+        """
+        # Verbosity sanity checks
+        if type(invVerbosity) is str:
+            if invVerbosity == "":                              # Must be the first str check
+                raise ValueError("Passed empty string!")
+            if invVerbosity.isdigit():
+                # Everything O.K.
+                pass
+            else:
+                # If negative number
+                if invVerbosity[0] == "-":
+                    # If rest is a number
+                    if invVerbosity[1:].isdigit():
+                        # Everything O.K.
+                        pass
+                    else:
+                        raise ValueError("Passed str could not be converted to int!")
+                # First character is illegal
+                else:
+                    raise ValueError("Passed invalid str!")
+        elif type(invVerbosity) is int:
+            pass
+        else:
+            raise TypeError("Type must be either str or int!")
+
     class Settings:
         """
         Initialises generic settings:
          * invVerbosity level
          * actions if an error or warning occurred (provide a function to set behaviour)
         """
-        def __init__(self, invVerbosity: int, actionWarning, actionError):
+        def __init__(self, invVerbosity, actionWarning, actionError):
             """
             Initialise settings
             Arguments: see Logger.__init__ docstring
@@ -36,10 +68,10 @@ class Logger(metaclass=Singleton):
             self.actionWarning = actionWarning
             self.actionError = actionError
 
-    def __init__(self, invVerbosity: int = 0, actionWarning=None, actionError=None):
+    def __init__(self, invVerbosity = 0, actionWarning=None, actionError=None):
         """
-        Set settings
-        :param invVerbosity: Inverse invVerbosity levels: (default: 0)
+        Set settings - only called once (later it is __call__)
+        :param invVerbosity: [int or str] Inverse invVerbosity levels: (default: 0)
                         -1  : Print all (debug, info, weak warnings, warning & error)
                         0   : Print info, weak warnings, warning & error
                         1   : Print weak warnings, warning & error
@@ -49,6 +81,9 @@ class Logger(metaclass=Singleton):
         :param actionWarning: Provide a function which is executed in case of a warning (default: None)
         :param actionError: Provide a function which is executed in case of an error (default: None)
         """
+        Logger._checkVerbosity(invVerbosity)
+        # If every check went fine do conversion to int
+        invVerbosity = int(invVerbosity)                                                        # Convert to int since it might come as string through argument parsing
         self.__settings = Logger.Settings(invVerbosity, actionWarning, actionError)
 
     def __call__(self, invVerbosity: int = 0, actionWarning=None, actionError=None):
@@ -56,9 +91,19 @@ class Logger(metaclass=Singleton):
         Exactly like init
         This callable let the user change the settings later on
         """
+        Logger._checkVerbosity(invVerbosity)
+        # If every check went fine do conversion to int
+        invVerbosity = int(invVerbosity)                                                        # Convert to int since it might come as string through argument parsing
         self.__settings = Logger.Settings(invVerbosity, actionWarning, actionError)
 
+
     def debug(self, *text, disableColour=False):
+        """
+        Debug (print defug information)
+        :param text: See doc of `_checkNconvertStr`
+        :param disableColour: disable coloured output (default: False)
+        :return: The text printed
+        """
         if 1 > self.__settings.invVerbosity:
             return debug(*text, disableColour=disableColour)
 
