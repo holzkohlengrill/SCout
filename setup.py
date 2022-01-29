@@ -5,7 +5,7 @@ with open("readme.md", "r") as fp:
 
 setuptools.setup(
     name="pypiscout",
-    version="2.0.1",                                            # FIXME: deduce version from source file (MSc)
+    version="2.0.3",                                            # FIXME: deduce version from source file (MSc)
     license="MIT",
     author="Marcel Schmalzl",
     description="Description Special Character Out (aka pypiscout) | Prints uniformly formatted console output",
