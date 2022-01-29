@@ -27,7 +27,7 @@ The SCout Logger as well as Simple SCout can be used independently.
 
 
 # Usage
-Additionally [example files](examples) are provided.
+Additionally [example files](https://github.com/holzkohlengrill/SCout/tree/master/examples) are provided.
 
 ## Simple SCout
 Usie it similar to `print()`:
